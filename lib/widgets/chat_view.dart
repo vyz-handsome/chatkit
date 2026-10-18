@@ -88,8 +88,8 @@ class ChatView extends StatelessWidget {
                         child: CustomPaint(
                           painter: _WatermarkPainter(
                             pal.dark
-                                ? Colors.white.withAlpha(26)
-                                : Colors.black.withAlpha(22),
+                                ? Colors.white.withAlpha(13)
+                                : Colors.black.withAlpha(12),
                           ),
                         ),
                       ),
@@ -231,7 +231,7 @@ class _WatermarkPainter extends CustomPainter {
         text: 'ChatKit · simulasi',
         style: TextStyle(
           color: color,
-          fontSize: 11,
+          fontSize: 10,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.6,
         ),
@@ -242,9 +242,9 @@ class _WatermarkPainter extends CustomPainter {
     canvas.save();
     canvas.rotate(-0.45);
     int row = 0;
-    for (double y = -span; y < span; y += 95) {
-      final off = (row++ % 2 == 0) ? 0.0 : 75.0;
-      for (double x = -span + off; x < span; x += 150) {
+    for (double y = -span; y < span; y += 160) {
+      final off = (row++ % 2 == 0) ? 0.0 : 120.0;
+      for (double x = -span + off; x < span; x += 240) {
         tp.paint(canvas, Offset(x, y));
       }
     }
