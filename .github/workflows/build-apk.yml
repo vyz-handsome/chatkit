@@ -33,10 +33,10 @@ jobs:
         run: flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release --no-shrink
+        run: flutter build apk --release --no-shrink --split-per-abi
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: ChatKit-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/app-*-release.apk
