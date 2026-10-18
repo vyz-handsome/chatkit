@@ -26,4 +26,43 @@ for name in ("build.gradle.kts", "build.gradle"):
     content = content.replace("minSdkVersion = flutter.minSdkVersion", "minSdkVersion = 24")
     gradle.write_text(content)
 
+
+# Paksa semua library Android (plugin) compile pakai SDK 36.
+# Beberapa plugin masih compileSdk 34 padahal dependency lifecycle butuh 36.
+KTS_BLOCK = """// --- ChatKit: paksa compileSdk 36 untuk semua plugin ---
+subprojects {
+    afterEvaluate {
+        val androidExt = extensions.findByName("android")
+        if (androidExt != null) {
+            try {
+                androidExt.javaClass
+                    .getMethod("setCompileSdk", Int::class.javaObjectType)
+                    .invoke(androidExt, 36)
+            } catch (e: Exception) {
+                println("compileSdk override gagal di ${project.name}: $e")
+            }
+        }
+    }
+}
+// --- akhir blok ChatKit ---
+
+"""
+GROOVY_BLOCK = """// --- ChatKit: paksa compileSdk 36 untuk semua plugin ---
+subprojects {
+    afterEvaluate { p ->
+        if (p.hasProperty('android')) {
+            p.android.compileSdk = 36
+        }
+    }
+}
+// --- akhir blok ChatKit ---
+
+"""
+for name, block in (("build.gradle.kts", KTS_BLOCK), ("build.gradle", GROOVY_BLOCK)):
+    root_gradle = root / name
+    if root_gradle.exists():
+        body = root_gradle.read_text()
+        if "ChatKit: paksa compileSdk" not in body:
+            root_gradle.write_text(block + body)
+
 print("Android project dipatch.")
