@@ -295,8 +295,8 @@ class _ExportScreenState extends State<ExportScreen> {
                             child: MediaQuery(
                               data: mq.copyWith(
                                 size: const Size(_w, _h),
-                                padding: const EdgeInsets.only(top: 47, bottom: 20),
-                                viewPadding: const EdgeInsets.only(top: 47, bottom: 20),
+                                padding: const EdgeInsets.only(top: 30, bottom: 20),
+                                viewPadding: const EdgeInsets.only(top: 30, bottom: 20),
                                 viewInsets: EdgeInsets.zero,
                                 textScaler: TextScaler.noScaling,
                               ),

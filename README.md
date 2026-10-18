@@ -2,7 +2,7 @@
 
 Simulator chat bergaya iOS "liquid glass" untuk bikin konten video (TikTok/Reels).
 Tampilannya orisinal, bukan tiruan app chat mana pun, dan semua hasil export
-membawa tanda "Chat Simulasi" (label kecil di header + pola watermark tipis).
+membawa tanda "Chat Simulasi" (label kecil di bawah header).
 
 ## Fitur
 

@@ -83,19 +83,6 @@ class ChatView extends StatelessWidget {
                     child: RepaintBoundary(child: _Background(project: project)),
                   ),
                   Positioned.fill(
-                    child: IgnorePointer(
-                      child: RepaintBoundary(
-                        child: CustomPaint(
-                          painter: _WatermarkPainter(
-                            pal.dark
-                                ? Colors.white.withAlpha(13)
-                                : Colors.black.withAlpha(12),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned.fill(
                     child: ListView.builder(
                       reverse: true,
                       controller: scroll,
@@ -218,41 +205,6 @@ class _Background extends StatelessWidget {
       ],
     );
   }
-}
-
-class _WatermarkPainter extends CustomPainter {
-  _WatermarkPainter(this.color);
-  final Color color;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final tp = TextPainter(
-      text: TextSpan(
-        text: 'ChatKit · simulasi',
-        style: TextStyle(
-          color: color,
-          fontSize: 10,
-          fontWeight: FontWeight.w600,
-          letterSpacing: 0.6,
-        ),
-      ),
-      textDirection: TextDirection.ltr,
-    )..layout();
-    final span = size.height + size.width;
-    canvas.save();
-    canvas.rotate(-0.45);
-    int row = 0;
-    for (double y = -span; y < span; y += 160) {
-      final off = (row++ % 2 == 0) ? 0.0 : 120.0;
-      for (double x = -span + off; x < span; x += 240) {
-        tp.paint(canvas, Offset(x, y));
-      }
-    }
-    canvas.restore();
-  }
-
-  @override
-  bool shouldRepaint(_WatermarkPainter old) => old.color != color;
 }
 
 class _Header extends StatelessWidget {
