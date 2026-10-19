@@ -43,7 +43,6 @@ const wallPresets = <WallPreset>[
       [Color(0xFF1E1A12), Color(0xFF262014)]),
 ];
 
-const reactionEmojis = ['👍', '❤️', '😂', '😮', '😢', '🙏'];
 
 const memberColors = <int>[
   0xFF2F9BFF,
