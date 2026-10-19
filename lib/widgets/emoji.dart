@@ -12,10 +12,30 @@ class FakeEmoji extends StatelessWidget {
 
   static const _kinds = ['like', 'heart', 'laugh', 'wow', 'sad', 'pray'];
 
+  /// Emoji yang sudah punya gambar di assets/emoji/ dipakai langsung.
+  /// Sisanya (like, heart, pray) memakai gambar vector bawaan sebagai cadangan.
+  /// Cukup taruh like.png / heart.png / pray.png di assets/emoji/ lalu
+  /// tambahkan barisnya di sini untuk menggantinya.
+  static const _assets = <String, String>{
+    'laugh': 'assets/emoji/laugh.png',
+    'wow': 'assets/emoji/wow.png',
+    'sad': 'assets/emoji/sad.png',
+  };
+
   @override
   Widget build(BuildContext context) {
     final i = reactionEmojis.indexOf(code);
     if (i < 0) return Text(code, style: TextStyle(fontSize: size * 0.85));
+    final asset = _assets[_kinds[i]];
+    if (asset != null) {
+      return Image.asset(
+        asset,
+        width: size,
+        height: size,
+        fit: BoxFit.contain,
+        filterQuality: FilterQuality.high,
+      );
+    }
     return CustomPaint(
       size: Size.square(size),
       painter: _EmojiPainter(_kinds[i]),
