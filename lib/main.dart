@@ -20,11 +20,13 @@ class ChatKitApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
+        fontFamily: 'Inter',
         colorSchemeSeed: seed,
         brightness: Brightness.light,
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
+        fontFamily: 'Inter',
         colorSchemeSeed: seed,
         brightness: Brightness.dark,
       ),

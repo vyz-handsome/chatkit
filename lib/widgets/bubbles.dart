@@ -7,6 +7,7 @@ import '../models.dart';
 import '../playback.dart';
 import '../store.dart';
 import '../theme.dart';
+import 'emoji.dart';
 import 'glass.dart';
 
 String fmtTime(int minutes, bool use24h) {
@@ -200,7 +201,7 @@ class MessageRow extends StatelessWidget {
                         : const Color(0xFFE2E2E6),
                   ),
                 ),
-                child: Text(m.reaction!, style: const TextStyle(fontSize: 14)),
+                child: FakeEmoji(m.reaction!, size: 16),
               ),
             ),
           ],

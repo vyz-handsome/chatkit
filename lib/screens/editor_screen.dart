@@ -16,6 +16,7 @@ import '../store.dart';
 import '../theme.dart';
 import '../widgets/bubbles.dart';
 import '../widgets/chat_view.dart';
+import '../widgets/emoji.dart';
 import '../widgets/glass.dart';
 import 'export_screen.dart';
 import 'sheets.dart';
@@ -464,7 +465,7 @@ class _EditorScreenState extends State<EditorScreen> {
                                         ? Colors.white24
                                         : Colors.transparent,
                                   ),
-                                  child: Text(e, style: const TextStyle(fontSize: 26)),
+                                  child: FakeEmoji(e, size: 30),
                                 ),
                               ),
                           ],
@@ -624,7 +625,7 @@ class _EditorScreenState extends State<EditorScreen> {
                       ),
                       for (final e in reactionEmojis)
                         ChoiceChip(
-                          label: Text(e),
+                          label: FakeEmoji(e, size: 22),
                           selected: m.reaction == e,
                           onSelected: (_) => upd(() => m.reaction = e),
                         ),

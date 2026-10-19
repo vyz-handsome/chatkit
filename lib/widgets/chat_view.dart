@@ -72,7 +72,11 @@ class ChatView extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: DefaultTextStyle(
-        style: TextStyle(color: pal.textOther, fontSize: 16),
+        style: TextStyle(
+          color: pal.textOther,
+          fontSize: 16,
+          fontFamily: 'Inter',
+        ),
         child: ClipRect(
           child: LayoutBuilder(
             builder: (context, c) {

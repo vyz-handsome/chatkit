@@ -10,6 +10,7 @@ membawa tanda "Chat Simulasi" (label kecil di bawah header).
 - Chat pribadi dan grup (nama + warna + foto per anggota)
 - Status header: online, mengetik..., atau teks sendiri
 - Latar belakang: 6 bawaan atau import dari galeri
+- Font Inter (mirip font iOS) dan 6 emoji reaksi gambar sendiri (bukan emoji Apple)
 - Pesan: teks, foto (dengan keterangan), stiker (dari foto), voice note,
   balasan, reaksi emoji, bintang, pesan dihapus, pemisah tanggal
 - Voice note dari video, file audio, atau rekam langsung. Bentuk gelombang
