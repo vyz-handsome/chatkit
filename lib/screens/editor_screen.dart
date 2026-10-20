@@ -379,7 +379,7 @@ class _EditorScreenState extends State<EditorScreen> {
         }
 
         Widget item(String label, IconData icon, VoidCallback f,
-            {bool danger = false}) {
+            {bool danger = false, bool mirror = false}) {
           final c = danger ? const Color(0xFFFF6B6B) : Colors.white;
           return InkWell(
             onTap: () => act(f),
@@ -390,7 +390,12 @@ class _EditorScreenState extends State<EditorScreen> {
                   Expanded(
                     child: Text(label, style: TextStyle(fontSize: 17, color: c)),
                   ),
-                  Icon(icon, size: 21, color: c),
+                  mirror
+                      ? Transform.flip(
+                          flipX: true,
+                          child: Icon(icon, size: 21, color: c),
+                        )
+                      : Icon(icon, size: 21, color: c),
                 ],
               ),
             ),
@@ -401,7 +406,7 @@ class _EditorScreenState extends State<EditorScreen> {
         final entries = <Widget>[
           item('Balas', Icons.reply_rounded, () => setState(() => replyTo = m)),
           divider,
-          item('Teruskan', Icons.forward_rounded, () {}),
+          item('Teruskan', Icons.reply_rounded, () {}, mirror: true),
           divider,
           item('Salin', Icons.copy_rounded, () {
             if (m.text.isNotEmpty) Clipboard.setData(ClipboardData(text: m.text));
